@@ -21,7 +21,7 @@ In Node.js:
 const Zibal = require('zibal');
 
 // Initialize with configurations
-Zibal.init({
+const zibal = new Zibal({
 	merchant: 'YOUR-MERCHANT-ID',
 	callbackUrl: 'https://some-callback-url.tld',
 	logLevel: 2
@@ -31,7 +31,7 @@ Zibal.init({
 });
 
 // Payment Request
-Zibal.request(1500)
+zibal.request(1500)
 	.then((result) => {
 		console.log(result);
 		// { trackId: 1533727744287, result: 100, message: 'success', statusMessage: 'با موفقیت تایید شد.' }
@@ -41,11 +41,11 @@ Zibal.request(1500)
 	});
 
 // Payment Start URL
-const url = Zibal.startURL(1533727744287);
+const url = zibal.startURL(1533727744287);
 // >> then open url in browser
 
 // Payment Verify
-Zibal.verify(1533727744287)
+zibal.verify(1533727744287)
 	.then((result) => {
 		console.log(result);
 		// { paidAt: '2018-03-25T23:43:01.053000', amount: 1600, result: 100, status: 1, message : 'success', statusMessage: 'با موفقیت تایید شد.' }
